@@ -6,6 +6,11 @@ from test import MyTest
  
 t = MyTest(1)
 
+num = t.test()
+
+print("\n")
+print("%d" % num)
+
 #class OBJECT_PT_pingpong(bpy.types.Panel):
 #    bl_label = "Ping Pong"
 #   bl_space_type = "PROPERTIES"
