@@ -5,7 +5,7 @@ namespace bv
 	public:
 		Test();
 		Test(int num);
-		void test();
+		int test();
 	private:
 		int m_num;
 	};

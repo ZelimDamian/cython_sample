@@ -2,13 +2,13 @@ cdef extern from "test.h" namespace "bv":
 	cdef cppclass Test:
 		Test()
 		Test(int num)
-		void test()
+		int test()
 
 cdef class MyTest:
 	cdef Test c_test
 
 	def __init__(self, int num):
-		self.c_test = Test()
+		self.c_test = Test(num)
 
 	def test(self):
-		self.c_test.test()
+		return self.c_test.test()

@@ -515,7 +515,7 @@ static const char *__pyx_f[] = {
 struct __pyx_obj_4test_MyTest;
 
 /* "test.pyx":7
- * 		void test()
+ * 		int test()
  * 
  * cdef class MyTest:             # <<<<<<<<<<<<<<
  * 	cdef Test c_test
@@ -625,6 +625,9 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
 /* None.proto */
 #include <new>
 
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
+
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
@@ -653,7 +656,7 @@ static const char __pyx_k_test[] = "__test__";
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_num;
 static PyObject *__pyx_n_s_test;
-static int __pyx_pf_4test_6MyTest___init__(struct __pyx_obj_4test_MyTest *__pyx_v_self, CYTHON_UNUSED int __pyx_v_num); /* proto */
+static int __pyx_pf_4test_6MyTest___init__(struct __pyx_obj_4test_MyTest *__pyx_v_self, int __pyx_v_num); /* proto */
 static PyObject *__pyx_pf_4test_6MyTest_2test(struct __pyx_obj_4test_MyTest *__pyx_v_self); /* proto */
 static PyObject *__pyx_tp_new_4test_MyTest(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 
@@ -661,14 +664,14 @@ static PyObject *__pyx_tp_new_4test_MyTest(PyTypeObject *t, PyObject *a, PyObjec
  * 	cdef Test c_test
  * 
  * 	def __init__(self, int num):             # <<<<<<<<<<<<<<
- * 		self.c_test = Test()
+ * 		self.c_test = Test(num)
  * 
  */
 
 /* Python wrapper */
 static int __pyx_pw_4test_6MyTest_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static int __pyx_pw_4test_6MyTest_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  CYTHON_UNUSED int __pyx_v_num;
+  int __pyx_v_num;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
@@ -714,7 +717,7 @@ static int __pyx_pw_4test_6MyTest_1__init__(PyObject *__pyx_v_self, PyObject *__
   return __pyx_r;
 }
 
-static int __pyx_pf_4test_6MyTest___init__(struct __pyx_obj_4test_MyTest *__pyx_v_self, CYTHON_UNUSED int __pyx_v_num) {
+static int __pyx_pf_4test_6MyTest___init__(struct __pyx_obj_4test_MyTest *__pyx_v_self, int __pyx_v_num) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
@@ -722,17 +725,17 @@ static int __pyx_pf_4test_6MyTest___init__(struct __pyx_obj_4test_MyTest *__pyx_
   /* "test.pyx":11
  * 
  * 	def __init__(self, int num):
- * 		self.c_test = Test()             # <<<<<<<<<<<<<<
+ * 		self.c_test = Test(num)             # <<<<<<<<<<<<<<
  * 
  * 	def test(self):
  */
-  __pyx_v_self->c_test = bv::Test();
+  __pyx_v_self->c_test = bv::Test(__pyx_v_num);
 
   /* "test.pyx":10
  * 	cdef Test c_test
  * 
  * 	def __init__(self, int num):             # <<<<<<<<<<<<<<
- * 		self.c_test = Test()
+ * 		self.c_test = Test(num)
  * 
  */
 
@@ -743,10 +746,10 @@ static int __pyx_pf_4test_6MyTest___init__(struct __pyx_obj_4test_MyTest *__pyx_
 }
 
 /* "test.pyx":13
- * 		self.c_test = Test()
+ * 		self.c_test = Test(num)
  * 
  * 	def test(self):             # <<<<<<<<<<<<<<
- * 		self.c_test.test()
+ * 		return self.c_test.test()
  */
 
 /* Python wrapper */
@@ -765,24 +768,34 @@ static PyObject *__pyx_pw_4test_6MyTest_3test(PyObject *__pyx_v_self, CYTHON_UNU
 static PyObject *__pyx_pf_4test_6MyTest_2test(struct __pyx_obj_4test_MyTest *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("test", 0);
 
   /* "test.pyx":14
  * 
  * 	def test(self):
- * 		self.c_test.test()             # <<<<<<<<<<<<<<
+ * 		return self.c_test.test()             # <<<<<<<<<<<<<<
  */
-  __pyx_v_self->c_test.test();
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_test.test()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
 
   /* "test.pyx":13
- * 		self.c_test = Test()
+ * 		self.c_test = Test(num)
  * 
  * 	def test(self):             # <<<<<<<<<<<<<<
- * 		self.c_test.test()
+ * 		return self.c_test.test()
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("test.MyTest.test", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -1392,6 +1405,33 @@ bad:
         }\
         return (target_type) value;\
     }
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
+    const int neg_one = (int) -1, const_zero = (int) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(int) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+        }
+    } else {
+        if (sizeof(int) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(int),
+                                     little, !is_unsigned);
+    }
+}
 
 /* CIntFromPy */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
