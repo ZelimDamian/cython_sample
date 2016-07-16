@@ -6,3 +6,16 @@
 
 1. Installing Cython
 
+## Building
+
+1. Build with
+
+```
+$ python setup.py build_ext --inplace 
+```
+
+2. Run with
+
+```
+$ python src/main.py
+```
