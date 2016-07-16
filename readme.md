@@ -17,5 +17,5 @@ $ python setup.py build_ext --inplace
 2. Run with
 
 ```
-$ python src/main.py
+$ python main.py
 ```
